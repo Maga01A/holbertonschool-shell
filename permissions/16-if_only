@@ -1,2 +1,8 @@
 #!/bin/bash
-[ "$(stat -c %U hello)" = "guillaume" ]  chown vincent hello
+# This script changes the owner of the file 'hello' to vincent
+# only if it is currently owned by guillaume.
+
+if [ "$(stat -c %U hello 2>/dev/null)" = "guillaume" ]; then
+    chown vincent hello
+fi
+
